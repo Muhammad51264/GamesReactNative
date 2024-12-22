@@ -40,6 +40,7 @@ function TabNavigator() {
         },
         tabBarLabelStyle: {
           fontSize: 12,
+          paddingBottom: 30,
         },
       })}
     >
