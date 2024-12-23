@@ -1,20 +1,21 @@
 import { StyleSheet } from "react-native";
-import { colors } from "../../colors";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    gap: 20
+    gap: 15,
+    marginTop: 20,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "",
   },
-  text: {
-    color: colors.whiteColor,
+  iconWithShadow: {
+    fontWeight: "bold",
+    textShadowColor: "rgba(0, 0, 0, 0.75)",
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 5,
   },
-  input: {
-    backgroundColor: colors.whiteColor,
-    padding: 10,
-    borderRadius: 5,
-    width: 200,
-  },
+
 });
 
 export default styles;

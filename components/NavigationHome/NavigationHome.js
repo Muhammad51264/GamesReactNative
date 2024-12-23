@@ -1,41 +1,57 @@
-import React, { useEffect, useState } from "react";
-import { Pressable, TextInput, View } from "react-native";
+import React from "react";
+import { Pressable, View } from "react-native";
 import styles from "./NavigationHome.styles";
 import DefaultText from "../shared/DefaultText/DefaultText";
+import NavElements from "./constants";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 function NavigationHome() {
-  const [value, setValue] = useState(0);
-  const [text, setText] = useState(0);
-
-  //   useEffect(() => {}, []);
-
-  const handlePress = () => setValue((prev) => prev + 1);
-
   return (
     <View style={styles.container}>
-      <DefaultText>{text}</DefaultText>
-      <TextInput
-        style={styles.input}
-        placeholder="Type here..."
-        value={text}
-        onChangeText={(input) => setText(input)}
-      />
+      {NavElements.map((nav) => (
+        <Pressable
+          key={nav.name}
+          style={({ pressed }) => [
+            {
+              backgroundColor: pressed ? nav.pressedColor : nav.color,
+              borderRadius: 5,
+              aspectRatio: 1,
+              alignItems: "center",
+              justifyContent: "center",
+              width: "45%",
+              shadowColor: nav.shadowColor,
+              shadowOffset: {
+                width: 4,
+                height: 4,
+              },
+              shadowOpacity: 1.18,
+              shadowRadius: 1.0,
 
-      <Pressable
-        style={({ pressed }) => [
-          {
-            backgroundColor: pressed ? "gray" : "red",
-            padding: 10,
-            borderRadius: 5,
-          },
-        ]}
-        onPress={handlePress}
-      >
-        <DefaultText style={{ color: "white", textAlign: "center" }}>
-          Click Me
-        </DefaultText>
-      </Pressable>
-      <DefaultText>{value}</DefaultText>
+              elevation: 1,
+            },
+          ]}
+        >
+          <Ionicons
+            name={nav.icon}
+            size={40}
+            color={"white"}
+            style={styles.iconWithShadow}
+          />
+          <DefaultText
+            style={{
+              color: "white",
+              textAlign: "center",
+              fontSize: 20,
+              fontWeight: "bold",
+              textShadowColor: "rgba(0, 0, 0, 0.75)",
+              textShadowOffset: { width: 2, height: 2 },
+              textShadowRadius: 5,
+            }}
+          >
+            {nav.name}
+          </DefaultText>
+        </Pressable>
+      ))}
     </View>
   );
 }
