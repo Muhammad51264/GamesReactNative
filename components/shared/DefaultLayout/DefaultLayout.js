@@ -1,16 +1,16 @@
 import React from "react";
-import { View } from "react-native";
+import { ScrollView } from "react-native";
 import defaultStyles from "./DefaultLayout.styles";
 function DefaultLayout({ children, style }) {
   return (
-    <View
+    <ScrollView
       style={{
         ...defaultStyles.defaultBackground,
         ...style,
       }}
     >
       {children}
-    </View>
+    </ScrollView>
   );
 }
 
